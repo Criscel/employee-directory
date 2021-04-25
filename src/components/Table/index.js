@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
-import TableRow from "../TableRow";
-import "./style.css";
+import TableData from "../TableData";
+import "./Table.css";
 
 class Table extends Component {
   state = {
@@ -9,7 +9,7 @@ class Table extends Component {
   }
 
   componentDidMount() {
-    API.getRandomEmployees()
+    API.getEmployee()
       .then(res => {
         this.setState({ results: res.data });
         console.log(this.state.results);
@@ -24,7 +24,6 @@ class Table extends Component {
           <thead>
             <tr>
               <th>NAME</th>
-              <th>DATE OF BIRTH</th>
               <th>PHONE NUMBER</th>
               <th>EMAIL</th>
               <th>ADDRESS</th>                            
@@ -33,9 +32,8 @@ class Table extends Component {
           <tbody>
             {this.state.results.results ? (
               this.state.results.results.map(result => (
-                <TableRow 
+                <TableData 
                   name={`${result.name.first} ${result.name.last}`}
-                  dob={result.dob.date}
                   phone={result.cell}
                   email={result.email}
                   address={`${result.location.street.number} ${result.location.street.name} ${result.location.city} ${result.location.state} ${result.location.country}`}                  
