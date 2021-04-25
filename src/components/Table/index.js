@@ -23,7 +23,8 @@ class Table extends Component {
         <table>
           <thead>
             <tr>
-              <th>NAME</th>
+              <th>LAST NAME</th>
+              <th>FIRST NAME</th>
               <th>PHONE NUMBER</th>
               <th>EMAIL</th>
               <th>ADDRESS</th>                            
@@ -33,7 +34,9 @@ class Table extends Component {
             {this.state.results.results ? (
               this.state.results.results.map(result => (
                 <TableData 
-                  name={`${result.name.first} ${result.name.last}`}
+                  lastname={result.name.last}
+                  firstname={result.name.first}
+                  // name={`${result.name.first} ${result.name.last}`}
                   phone={result.cell}
                   email={result.email}
                   address={`${result.location.street.number} ${result.location.street.name} ${result.location.city} ${result.location.state} ${result.location.country}`}                  
