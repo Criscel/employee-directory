@@ -1,43 +1,143 @@
-import React from 'react';
-import { FcFilledFilter,FcClearFilters,FcGenericSortingAsc,FcGenericSortingDesc  } from "react-icons/fc";
+import React from "react";
+import Search from "../Search/Search";
+import Select from "../Select/Select";
+import { FcFilledFilter, FcClearFilters, FcGenericSortingAsc, FcGenericSortingDesc } from "react-icons/fc";
+import { MdClear } from "react-icons/md";
 import "./Filter.css";
 
-function Filter() {
-    return (
-      <div className="filter-sort-div">
-        <div className="filter-div">
-          <label htmlFor="state-filter" className="label">Filter by </label>
-          <select id="state-filter" className="filter-select" defaultValue="none" defaultChecked="none">
-            <option value="none" disabled selected>State</option>
-            <option value="nsw">New South Wales</option>
-            <option value="act">Australian Capital Territory</option>
-            <option value="vic">Victoria</option>
-            <option value="qld">Queensland</option>
-            <option value="sa">South Australia</option>
-            <option value="wa">Western Australia</option>
-            <option value="nt">Northern Territory</option>
-            <option value="tas">Tasmania</option>    
-          </select>
+const stateFilterOptions = [
+  {
+    value: "none",
+    text: "State",
+    disabled: true
+  },
+  {
+    value: "New South Wales",
+    text: "New South Wales"
+  },
+  {
+    value: "Victoria",
+    text: "Victoria"
+  },
+  {
+    value: "Queensland",
+    text: "Queensland"
+  },
+  {
+    value: "Western Australia",
+    text: "Western Australia"
+  },
+  {
+    value: "South Australia",
+    text: "South Australia"
+  },  
+  {
+    value: "Tasmania",
+    text: "Tasmania"
+  },
+  {
+    value: "Australian Capital Territory",
+    text: "Australian Capital Territory"
+  },
+  {
+    value: "Northern Territory",
+    text: "Northern Territory"
+  },
+]
 
-          <button id="apply-filter-btn" className="sort-btn"><FcFilledFilter></FcFilledFilter></button>
+const ageFilterOptions = [
+  {
+    value: "none",
+    text: "Age group",
+    disabled: true
+  },
+  {
+    value: "0-29",
+    text: "Under 30"
+  },
+  {
+    value: "30-39",
+    text: "30-39"
+  },
+  {
+    value: "40-49",
+    text: "40-49"
+  },
+  {
+    value: "50-59",
+    text: "50-59"
+  },
+  {
+    value: "60-100",
+    text: "Over 60"
+  },
+]
 
-          <button id="clear-filter-btn" className="sort-btn"><FcClearFilters></FcClearFilters></button>
-        </div>
-  
-        <div className="sort-div">
-          <label htmlFor="sort" className="label">Sort by </label>
-          <select id="sort" className="sort-select" defaultValue="none" defaultChecked="none">
-            <option value="none" disabled>Category</option>
-            <option value="lastName">Last Name</option>
-            <option value="firstName">First Name</option>
-          </select>
-          &nbsp;
-          <button id="asc-btn" className="sort-btn"><FcGenericSortingAsc></FcGenericSortingAsc></button>
-          &nbsp;
-          <button id="desc-btn" className="sort-btn"><FcGenericSortingDesc></FcGenericSortingDesc></button>
-        </div>
+const sortOptions = [
+  {
+    value: "none",
+    text: "Category",
+    disabled: true
+  },
+  {
+    value: "firstName",
+    text: "First name"
+  },
+  {
+    value: "lastName",
+    text: "Last name"
+  },
+  {
+    value: "age",
+    text: "Age"
+  },
+]
+
+function Filter(props) {
+  return (
+    <div className="search-sort-filter-div">
+      <Search
+        handleNameSearch={props.handleNameSearch}
+      />
+      <hr id="search-hr"></hr>
+      <div className="sort-filter-div">
+      <div className="filter-div">
+        <span className="span-label">Filter By: </span>
+       
+        <Select
+          type="state"
+          filterOptions={stateFilterOptions}
+          handleFilterChange={props.handleStateFilterChange}
+        />
+        
+        <Select 
+          type="age"
+          filterOptions={ageFilterOptions}
+          handleFilterChange={props.handleAgeFilterChange}
+        />
+        
+        <button id="apply-filter-btn" className="sort-btn" onClick={props.filterEmployees}><FcFilledFilter></FcFilledFilter></button>
+        
+        <button id="clear-filter-btn" className="sort-btn" onClick={props.removeFilter}><FcClearFilters></FcClearFilters></button>
       </div>
-    )
-  }
-  
-  export default Filter;
+      <div className="sort-div">
+        <span className="span-label">Sort By: </span>
+       
+        <Select
+            type="sort"
+            filterOptions={sortOptions}
+            handleFilterChange={props.handleSortChange}
+        />
+        
+        <button id="asc-btn" className="sort-btn" onClick={props.sortEmployeesAsc}><FcGenericSortingAsc></FcGenericSortingAsc></button>
+        
+        <button id="desc-btn" className="sort-btn" onClick={props.sortEmployeesDesc}><FcGenericSortingDesc></FcGenericSortingDesc></button>
+        
+        <button id="clear-sort-btn" className="sort-btn" onClick={props.removeSort}><MdClear></MdClear></button>
+      </div>
+      </div>
+    </div>
+  )
+}
+
+export default Filter;

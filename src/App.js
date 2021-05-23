@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from "./components/Navigation";
-import Filter from "./components/Filter";
+import Container from "./components/Container";
+//import Filter from "./components/Filter";
 import Table from "./components/Table";
 
 
@@ -8,8 +9,10 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      <Filter />
+      <Container>
+      {/* <Filter /> */}
       <Table />
+      </Container>
     </div>
   );
 }

@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Freckle+Face&display=swap');
+
+nav {
+    background-color: burlywood;
+}
+
+h1 {
+    font-family: 'Freckle Face', cursive;
+    color: aqua; 
+}

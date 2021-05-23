@@ -1,0 +1,11 @@
+table {
+    margin-top: 5%;
+}
+
+th {
+    border: 2px solid rgb(226, 165, 12);
+    background-color: rgb(226, 165, 12); 
+    align-items: center;
+    padding: 10px 5px 10px 5px;
+    color: rgb(58, 16, 16);
+}
