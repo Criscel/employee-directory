@@ -9,3 +9,8 @@ th {
     padding: 10px 5px 10px 5px;
     color: rgb(58, 16, 16);
 }
+
+#no-employees {
+    color: red;
+    font-size: larger;
+}

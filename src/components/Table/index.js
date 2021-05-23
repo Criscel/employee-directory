@@ -4,6 +4,7 @@ import Filter from "../Filter";
 import TableData from "../TableData";
 import Mark from "mark.js"  //for search function
 import "./Table.css";
+import { SiZeromq } from "react-icons/si";
 
 let employees;
 
@@ -313,7 +314,7 @@ class Table extends Component {
                 ))
               ) : (
                 <tr>
-                  <td id="no-employees" colSpan="7">No employees to display <i className="fas fa-exclamation-triangle"></i></td>
+                  <td id="no-employees" colSpan="7"><SiZeromq></SiZeromq> NO EMPLOYEES TO DISPLAY <SiZeromq></SiZeromq></td>
                 </tr>
               )}
             </tbody>

@@ -4,7 +4,7 @@ const search = (props) => {
   return (
     <div>
       <div className="search-div">
-        <span className="span-label"> Search by </span>
+        <span className="span-label"> Search By: </span>
         &nbsp;
         <div className="searchbar-div">
           <input
